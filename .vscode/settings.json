@@ -1,4 +1,6 @@
 {
 	"files.autoSave": "off",
-	"eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
 }

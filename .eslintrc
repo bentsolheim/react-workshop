@@ -31,8 +31,6 @@
 	},
 	"rules": {
 		"object-curly-spacing": ["warn", "always"],
-		"indent": ["warn", "space"],
-		"quotes": ["warn", "double", {"avoidEscape": true}],
-		"semi": ["warn", "never"]
+		"quotes": ["warn", "double", {"avoidEscape": true}]
 	}
 }
