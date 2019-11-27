@@ -2,15 +2,34 @@ import React, { useState } from "react";
 import Button from "./Button";
 import PropTypes from "prop-types";
 
+const onNumericInputChange = onChange => e => {
+  const newValue = parseInt(e.target.value);
+  if (isNaN(newValue)) {
+    return;
+  }
+  onChange(newValue);
+};
+
 const DisplayCounter = props => {
-  return <h1>{props.count}</h1>;
+  return (
+    <div className="form-group">
+      <label>Count</label>
+      <input
+        type="text"
+        className="form-control"
+        value={props.count}
+        onChange={onNumericInputChange(props.onCountChange)}
+      />
+    </div>
+  );
 };
 DisplayCounter.propTypes = {
   count: PropTypes.number.isRequired,
-}
+  onCountChange: PropTypes.func.isRequired
+};
 
-const CountControls = (props) => {
-  const { count, onCountChange } = props
+const CountControls = props => {
+  const { count, onCountChange } = props;
 
   const mut = m => {
     return () => {
@@ -28,20 +47,20 @@ const CountControls = (props) => {
 };
 CountControls.propTypes = {
   count: PropTypes.number.isRequired,
-  onCountChange: PropTypes.func.isRequired,
-}
+  onCountChange: PropTypes.func.isRequired
+};
 
 const IncDec = () => {
   const [count, setCount] = useState(0);
 
-  const onCountChange = (newCount) => {
+  const onCountChange = newCount => {
     setCount(newCount);
-  }
+  };
 
   return (
     <div className="container form-group">
-      <DisplayCounter count={count} />
-      <CountControls count={count} onCountChange={onCountChange} /> 
+      <DisplayCounter count={count} onCountChange={onCountChange} />
+      <CountControls count={count} onCountChange={onCountChange} />
     </div>
   );
 };
