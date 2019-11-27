@@ -13,6 +13,7 @@ const TextInput = ({ id, label, value, onChange }) => {
   const onTextInputChange = e => {
     onChange(e.target.value);
   };
+
   return (
     <div className="form-group">
       <label htmlFor={inputId} className="control-label">

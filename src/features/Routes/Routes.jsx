@@ -5,14 +5,14 @@ import Home from "features/Home"
 import Increment from "features/Increment"
 import NotFound from "features/NotFound"
 import IncDec from "features/IncDec"
-import TextInputApp from "features/TextInputApp"
+import FormTest from "features/FormTest"
 
 export const Routes = () => (
 	<Switch>
 		<Route path="/" exact component={Home}/>
 		<Route path="/increment" exact component={Increment}/>
 		<Route path="/incdec" exact component={IncDec}/>
-		<Route path="/textinput" exact component={TextInputApp}/>
+		<Route path="/formtest" exact component={FormTest}/>
 		<Route component={NotFound}/>
 	</Switch>
 )

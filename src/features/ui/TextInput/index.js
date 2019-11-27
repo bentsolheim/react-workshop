@@ -1,3 +1,3 @@
-import TextInputApp from "./TextInput"
+import TextInput from "./TextInput"
 
-export default TextInputApp
+export default TextInput
