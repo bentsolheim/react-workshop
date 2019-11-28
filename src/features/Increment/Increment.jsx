@@ -1,39 +1,48 @@
-import React, { useState } from "react";
+import React from "react"
+import PropTypes from "prop-types"
 
-const Increment = () => {
-  const [count, setCount] = useState(0);
+const Increment = ({ count, increment }) => {
+	// const [count, setCount] = useState(0) // Destructuring
+	// const count = countState[0]
+	// const setCount = countState[1]
 
-  const onIncrementClick = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <h1>Count er {count}</h1>
-      <p>{count % 2 == 0 ? "even" : "odd"}</p>
-      <button onClick={onIncrementClick}>Increment</button>
-    </div>
-  );
-};
-
-class IncrementClass extends React.PureComponent {
-  state = {
-    count: 0
-  };
-
-  onIncrementClick = () => {
-    this.setState({ count: this.state.count + 1 });
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <p>{this.state.count % 2 == 0 ? "even" : "odd"}</p>
-        <button onClick={this.onIncrementClick}>Increment</button>
-      </div>
-    );
-  }
+	const oddOrEven = (count % 2 === 1) ? "odd" : "even"
+	
+	return (
+		<div>
+			<h1>{count}</h1>
+			<p>{oddOrEven}</p>
+			<button onClick={increment}>Increment</button>
+		</div>
+	)
+}
+Increment.propTypes = {
+	count: PropTypes.number.isRequired,
+	increment: PropTypes.func.isRequired
 }
 
-export default Increment;
+class IncrementClass extends React.PureComponent {
+	state = {
+		count: 0
+	}
+
+	increment = () => {
+		this.setState({
+			count: this.state.count + 1
+		})
+	}
+
+	render() {
+		const oddOrEven = (this.state.count % 2 === 1) ? "odd" : "even"
+
+		return (
+			<div>
+				<h1>{this.state.count}</h1>
+				<p>{oddOrEven}</p>
+				<button onClick={this.increment}>Increment</button>
+			</div>
+		)
+	}
+}
+
+export default Increment
