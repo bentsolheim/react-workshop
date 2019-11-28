@@ -11,7 +11,7 @@ const TextInputApp = () => {
   };
   return (
     <>
-      <TextInput id="name" label="Fornavn" value={firstName} onChange={onChange(setFirstName)} />
+      <TextInput label="Fornavn" value={firstName} onChange={onChange(setFirstName)} />
       <TextInput label="Etternavn" value={lastName} onChange={onChange(setLastName)} />
       <PasswordField label="Password" value={password} onChange={onChange(setPassword)} />
     </>
