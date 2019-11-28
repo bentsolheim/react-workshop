@@ -7,22 +7,27 @@ const FormField = ({ label, children }) => {
         .toString(36)
         .substring(3, 15)
 
-  const c = Array.isArray(children) ? children : [children]
-
-  const firstChild = React.cloneElement(c[0], { id: inputId })
+  const [firstChild, ...rest] = React.Children.toArray(children);
+  const c = [
+    React.cloneElement(firstChild, { id: inputId }),
+    ...rest
+  ]
   return (
     <div className="form-group">
       <label htmlFor={inputId} className="control-label">
         {label}
       </label>
-      {[firstChild, ...c.slice(1)]}
+      {c}
     </div>
   );
 };
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
+  children: PropTypes.oneOf(
+    PropTypes.elementType,
+    PropTypes.arrayOf(PropTypes.elementType)
+  )
 };
 
 export default FormField;
