@@ -17,10 +17,14 @@ describe("FormField", () => {
       }).toThrow();
     });
     it("renders a div with className", () => {
-      const { root } = create(<FormField type="text" label="test" ><input /></FormField>);
-      const divs = root.findAllByProps({ className: "form-group" })
+      const { root } = create(
+        <FormField type="text" label="test">
+          <input />
+        </FormField>
+      );
+      const divs = root.findAllByProps({ className: "form-group" });
       expect(divs.length).toBe(1);
-      expect(divs[0].type).toEqual("div")
+      expect(divs[0].type).toEqual("div");
     });
   });
 });
