@@ -50,8 +50,8 @@ CountControls.propTypes = {
   onCountChange: PropTypes.func.isRequired
 };
 
-const IncDec = () => {
-  const [count, setCount] = useState(0);
+const IncDec = ({ count, setCount }) => {
+  // const [count, setCount] = useState(0);
 
   const onCountChange = newCount => {
     setCount(newCount);
@@ -64,5 +64,9 @@ const IncDec = () => {
     </div>
   );
 };
+
+IncDec.propTypes = {
+  count: PropTypes.number.isRequired
+}
 
 export default IncDec;

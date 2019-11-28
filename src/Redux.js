@@ -2,10 +2,10 @@ import { createStore } from "redux"
 
 const reducer = (state, action) => {
 	console.log("state", state, "action", action)
-	if (action.type === "INCREMENT") {
+	if (action.type === "UPDATE_COUNT") {
 		return {
 			...state,
-			count: state.count + 1
+			count: action.count
 		}
 	}
 	return state
