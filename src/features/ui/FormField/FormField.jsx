@@ -12,7 +12,7 @@ const genId = (qualifier) => qualifier + "_" + Math.random()
 
 
 
-const FormField = ({ label, children }) => {
+export const FormField = ({ label, children }) => {
   const id = genId(label);
 
   return (
@@ -27,7 +27,10 @@ const FormField = ({ label, children }) => {
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
-  children: PropTypes.oneOf(PropTypes.elementType, PropTypes.arrayOf(PropTypes.elementType))
+  children: PropTypes.oneOf([
+    PropTypes.elementType, 
+    PropTypes.arrayOf(PropTypes.elementType)]
+    ).isRequired
 };
 
 export default FormField;
