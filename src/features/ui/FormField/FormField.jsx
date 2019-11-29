@@ -27,10 +27,7 @@ export const FormField = ({ label, children }) => {
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
-  children: PropTypes.oneOf([
-    PropTypes.elementType, 
-    PropTypes.arrayOf(PropTypes.elementType)]
-    ).isRequired
+  children: PropTypes.node.isRequired
 };
 
 export default FormField;
