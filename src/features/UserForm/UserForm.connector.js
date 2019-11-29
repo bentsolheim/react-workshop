@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onUserSubmitted: (user) => {
-			dispatch({ type: "CREATE_USER", payload: user })
+  onUserUpdated: (user) => {
+			dispatch({ type: "UPDATE_USER", payload: user })
   }
 })
 

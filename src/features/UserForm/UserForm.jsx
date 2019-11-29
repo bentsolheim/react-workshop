@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextInput from "ui/TextInput";
 import SelectInput from "ui/SelectInput";
 
-export const UserForm = ({ user, onUserSubmitted }) => {
+export const UserForm = ({ user, onUserUpdated }) => {
 
-  const [name, setName] = useState(user.name);
-  const [description, setDescription] = useState(user.description);
-  const [role, setRole] = useState(user.role);
+  console.log("UserForm", user)
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [role, setRole] = useState("");
+
+  useEffect(() => {
+    setName(user.name)
+    setDescription(user.description)
+    setRole(user.role)
+  }, [user])
+
+  console.log(name, description, role)
 
   const roles = [
     { label: "Admin", value: "admin" },
@@ -19,7 +28,15 @@ export const UserForm = ({ user, onUserSubmitted }) => {
       description,
       role
     }
-    onUserSubmitted(user);
+    onUserUpdated(user);
+  }
+  const onClearClick = () => {
+    const user = {
+      name: "",
+      description: "",
+      role: ""
+    }
+    onUserUpdated(user);
   }
 
   return (
@@ -29,6 +46,9 @@ export const UserForm = ({ user, onUserSubmitted }) => {
       <SelectInput label="Role" options={roles} value={role} onChange={setRole} />
       <button className="btn btn-primary" onClick={onSubmitClick}>
         Submit
+      </button>
+      <button className="btn btn-primary" onClick={onClearClick}>
+        Clear
       </button>
     </div>
   );

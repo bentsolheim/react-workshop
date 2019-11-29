@@ -8,7 +8,8 @@ const reducer = (state, action) => {
 			count: action.count
 		}
 	}
-	if (action.type === "CREATE_USER") {
+	if (action.type === "UPDATE_USER") {
+    console.log(action.payload)
 		return {
 			...state,
 			user: action.payload
