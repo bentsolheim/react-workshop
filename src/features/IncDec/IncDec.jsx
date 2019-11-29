@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "./Button";
 import PropTypes from "prop-types";
 
@@ -66,7 +66,8 @@ const IncDec = ({ count, setCount }) => {
 };
 
 IncDec.propTypes = {
-  count: PropTypes.number.isRequired
+  count: PropTypes.number.isRequired,
+  setCount: PropTypes.func.isRequired
 }
 
 export default IncDec;
